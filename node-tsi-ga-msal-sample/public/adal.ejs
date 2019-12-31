@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Azure Time Series Insights ADAL Hello World Sample</title>
+
+        <!-- Dependencies -->
+
+        <link rel="stylesheet" href="styles/style.css" type="text/css">
+        <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.11/js/adal.min.js"></script>
+        <script src="scripts/client.config.js.js" type="application/javascript"></script>
+        <script src="scripts/adal.helper.js" type="application/javascript"></script>
+
+    </head>
+    <body>
+
+        <h2>Time Series Insights ADAL "Hello World" Sample</h2>
+        <div>
+            <a href="#" onclick="authContext.login(); return false;">Log in</a> |
+            <a href="#" onclick="authContext.logOut(); return false;">Log out</a>
+        </div>
+        <p id="username"></p>
+        <pre id="api_response"></pre>
+        <div>Aggregates API result...</div>
+        <div id="sampleAggregates"></div>
+
+        <script src="scripts/tsi.aggregates.js" type="application/javascript"></script>
+
+    </body>
+</html>
