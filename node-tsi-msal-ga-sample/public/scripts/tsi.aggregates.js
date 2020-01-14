@@ -3,7 +3,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
-authContext.getTsiToken().then(token => {
+const getAggregatesStreamedApi = accessToken => {
+
     const webSocket = new WebSocket("wss://10000000-0000-0000-0000-100000000108.env.timeseries.azure.com/aggregates?api-version=2016-12-12")
 
     webSocket.onmessage = e => {
@@ -13,14 +14,13 @@ authContext.getTsiToken().then(token => {
 
     webSocket.onopen = () => {
         let messageObject = {}
-        messageObject['headers'] = {'Authorization': 'Bearer ' + token};
+        messageObject['headers'] = {'Authorization': 'Bearer ' + accessToken};
         const contentObject = {
             predicate: {predicateString: ''},
             searchSpan: {from: "2017-04-30T23:00:00.000Z", to: "2017-05-01T00:00:00.000Z"},
             aggregates: [
                 {
-                    dimension:
-                        {dateHistogram: {input: {builtInProperty: "$ts"}, breaks: {size: "1m"}}},
+                    dimension: {dateHistogram: {input: {builtInProperty: "$ts"}, breaks: {size: "1m"}}},
                     measures: [{count: {}}]
                 }
             ]
@@ -28,4 +28,4 @@ authContext.getTsiToken().then(token => {
         messageObject['content'] = contentObject
         webSocket.send(JSON.stringify(messageObject))
     }
-})
+}

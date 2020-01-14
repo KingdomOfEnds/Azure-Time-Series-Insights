@@ -1,0 +1,32 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Azure Time Series Insights MSAL Hello World Sample</title>
+
+        <!-- Dependencies -->
+
+        <link rel="stylesheet" href="styles/style.css" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <script src="https://alcdn.msftauth.net/lib/1.2.0/js/msal.js"  integrity="sha384-LSjD9o5MhT3UejOHZ5BJrlAp3TxNM6z68DPYw3o7Q3ApJviS9kOGP0oQyTaJJd9O" crossorigin="anonymous"></script>
+        <script src="scripts/client.config.js" type="application/javascript"></script>
+
+    </head>
+    <body>
+
+    <h2>Azure Time Series Insights  MSAL <a href="https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api">Streamed Aggregates API</a> Sample</h2>
+
+        <div>
+            <a href="#" id="login">Log in</a> |
+            <a href="#" id="logout">Log out</a>
+        </div>
+
+        <p id="username"></p>
+        <pre id="api_response"></pre>
+        <div>Aggregates API result...</div>
+        <div id="sampleAggregates"></div>
+
+        <script src="scripts/tsi.aggregates.js" type="application/javascript"></script>
+        <script src="scripts/msal.helper.js" type="application/javascript"></script>
+
+    </body>
+</html>

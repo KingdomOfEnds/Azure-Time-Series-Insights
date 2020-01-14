@@ -4,7 +4,6 @@
 // Licensed under the MIT license.
 
 module.exports = {
-
   createHttpServer: port => {
     const s = (require('http')).createServer(require('./express').createServer())
     console.log('HTTP initialized!')
@@ -19,5 +18,4 @@ module.exports = {
     s.listen(port, () => console.log(`HTTP server started on port: ${s.address().port}`))
     return s
   }
-
 }

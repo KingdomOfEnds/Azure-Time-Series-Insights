@@ -19,6 +19,7 @@ These are samples that use the [Azure Time Series Insights](https://azure.com/ts
 ### TSI GA
 * [C# Sample App](csharp-tsi-ga-sample)
 * [Javascript Sample App](javascript-tsi-ga-sample)
+* [Node MSAL Sample App](node-tsi-msal-ga-sample)
 
 
 ## Getting Started

@@ -1,7 +1,7 @@
 {
-    "name": "node-tsi-ga-msal-sample",
+    "name": "node-tsi-msal-ga-sample",
     "version": "1.0.0",
-    "description": "Azure Time Series Insights MSAL and ADAL JavaScript examples using a Node server.",
+    "description": "Azure Time Series Insights MSAL.JS and ADAL.JS Node examples.",
     "scripts": {
         "start": "node cluster.js",
         "stop-win": "Taskkill /IM node.exe /F",
@@ -12,13 +12,13 @@
         "url": "https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/javascript-tsi-ga-sample"
     },
     "engines": {
-        "node": "=8.8.0"
+        "node": "=12.14.1"
     },
     "keywords": [
         "Azure",
         "Azure Time Series Insights",
-        "ADAL.js",
-        "MSAL.js",
+        "ADAL.JS",
+        "MSAL.JS",
         "Azure Active Directory"
     ],
     "author": "Adam I. Gerard",
