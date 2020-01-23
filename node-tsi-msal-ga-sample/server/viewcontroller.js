@@ -8,6 +8,7 @@ const view = express.Router()
 
 view
   .get('/msal', (req, res) => res.render('msal.ejs'))
+  //.get('/adal', (req, res) => res.render('adal.ejs'))
   .get('/test', async (req, res) => await res.send({message: "hello world!"}))
 
 console.log(`View controller initialized!`)

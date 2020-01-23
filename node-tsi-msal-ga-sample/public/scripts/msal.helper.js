@@ -8,16 +8,17 @@ window.onload = () => {
     const config = {
         auth: {
             clientId: CLIENT_CONFIG.clientId,
-            authority: 'https://login.microsoftonline.com/microsoft.onmicrosoft.com/',
+            authority: 'https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/',
             validateAuthority: true,
             redirectUri: CLIENT_CONFIG.redirectURI,
             postLogoutRedirectUri: CLIENT_CONFIG.redirectURI,
             navigateToLoginRequestUrl: false
-        },
-        cache: {
-            cacheLocation: 'localStorage',
-            storeAuthStateInCookie: false
         }
+    }
+
+    // Can replace with MSAL cache module
+    let inMemoryEncapsulatedStorage = {
+        "rawToken": ""
     }
 
     let localMsalContext = new Msal.UserAgentApplication(config)
@@ -27,32 +28,34 @@ window.onload = () => {
             const request = {scopes: ["https://api.timeseries.azure.com//user_impersonation"]}
             localMsalContext.loginPopup(request)
                 .then(response => {
-                        const token = response.accessToken
-                        console.log(token)
-                        console.log(localMsalContext.getCachedToken())
-                        localMsalContext.login()
+                        const token = response.idToken.rawIdToken
+                        console.log(`Token acquired: ${token} ...`)
+                        inMemoryEncapsulatedStorage["rawToken"] = token
+                        console.log(`Token saved to in-memory cache: ${JSON.stringify(inMemoryEncapsulatedStorage)} ...`)
                         return resolve(token)
                     }
                 ).catch(err => {
-                console.error(`Login error encounter: ${err.toString()}! Please check your AAD settings and try again...`)
-                logout(localMsalContext)
-            })
+                    console.error(`Login error encounter: ${err.toString()}! Please check your AAD settings and try again...`)
+                    logout()
+                }
+            )
         })
     }
 
     const login = () => {
+        console.log("Logging in ...")
         authenticate().then(token => {
-            getAggregatesStreamedApi(token)
+            getAggregatesStreamedApi(token).then(success => {
+                console.log(`Message received: ${JSON.stringify(success)} ...`)
+            })
         })
     }
 
-    const logout = authContent => authContent.logOut()
+    const logout = () => {
+        console.log("Logging out ... erasing in-memory token cache...")
+        inMemoryEncapsulatedStorage["rawToken"] = ""
+    }
 
-    document.getElementById("login").addEventListener("click", e => {
-        login()
-    })
-    document.getElementById("logout").addEventListener("click", e => {
-        logout(localMsalContext)
-    })
-
+    document.getElementById("login").addEventListener("click", e => login())
+    document.getElementById("logout").addEventListener("click", e => logout())
 }

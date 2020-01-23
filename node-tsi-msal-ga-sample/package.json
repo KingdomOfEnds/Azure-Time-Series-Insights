@@ -1,7 +1,7 @@
 {
     "name": "node-tsi-msal-ga-sample",
     "version": "1.0.0",
-    "description": "Azure Time Series Insights MSAL.JS and ADAL.JS Node examples.",
+    "description": "Azure Time Series Insights MSAL.JS Node examples.",
     "scripts": {
         "start": "node cluster.js",
         "stop-win": "Taskkill /IM node.exe /F",
@@ -9,7 +9,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/javascript-tsi-ga-sample"
+        "url": "https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/node-tsi-msal-ga-sample"
     },
     "engines": {
         "node": "=12.14.1"
@@ -29,6 +29,6 @@
         "cookie-parser": "=1.4.3",
         "ejs": "=2.5.9",
         "express": "=4.16.3",
-        "morgan": "=1.9.0"
+        "morgan": "=1.9.1"
     }
 }
