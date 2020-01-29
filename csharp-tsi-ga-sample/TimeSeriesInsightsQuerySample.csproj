@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -33,10 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <!-- TODO: Set it appropriately via Nuget.Config-->
+    <!-- TODO: Set your Nuget user directory path appropriately via Nuget.Config -->
     <NugetPack Condition="'$(NugetPack)' == ''">$(MSBuildThisFileDirectory.SubString(0,2))\NuGetPackages</NugetPack>
-    <NSJsonRefPath Condition="$(NSJsonRefPath) == ''">$(NuGetPack)\Newtonsoft.Json.9.0.1\lib\net45</NSJsonRefPath>
-    <MicrosoftIdentityModelClientsADRefPath Condition="$(MicrosoftIdentityModelClientsADRefPath) == ''">$(NuGetPack)\Microsoft.IdentityModel.Clients.ActiveDirectory.3.13.9\lib\net45</MicrosoftIdentityModelClientsADRefPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,9 +44,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="$(NSJsonRefPath)\Newtonsoft.Json.dll" />
-    <Reference Include="$(MicrosoftIdentityModelClientsADRefPath)\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <Reference Include="$(MicrosoftIdentityModelClientsADRefPath)\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
+    <Reference Include="$(NugetPack)\packages\newtonsoft.json\12.0.3\lib\net45\Newtonsoft.Json.dll" />
+    <Reference Include="$(NugetPack)\packages\microsoft.identity.client\4.7.1\lib\net45\Microsoft.Identity.Client.dll" />
+    <Reference Include="$(NugetPack)\packages\system.net.http\4.3.4\lib\net46\System.Net.Http.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
