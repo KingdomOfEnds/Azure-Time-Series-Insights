@@ -3,7 +3,7 @@ title: Call the Query API from Azure Time Series Insights GA environments using 
 description: This sample covers how to call the Query API from Azure Time Series Insights GA environments using C# and MSAL.NET
 ---
 
-# Query the GA Reference Data Management API from Azure Time Series Insights using C# and MSAL.NET
+# Call the Query API from Azure Time Series Insights GA environments using C# and MSAL.NET
 
 This C# example demonstrates how to call the Query APIs from Azure Time Series Insights GA environments using [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) as described in the [Query data from the Azure Time Series Insights GA environment using C#](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-query-data-csharp) article.
 
