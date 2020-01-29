@@ -25,7 +25,7 @@ This C# example demonstrates how to call the Query APIs from Azure Time Series I
 This example demonstrates a few important Azure Active Directory and Azure Time Series Insights features:
 
 1. Acquiring an access token using MSAL.NET **ConfidentialClientApplication**.
-1. Sequential API operations against the [GA Reference Data Management API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
+1. Sequential API operations against the [GA Query API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
 
 Read [Create a reference data set for your Time Series Insights environment using the Azure portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-query-data-csharp) to learn more.
 
