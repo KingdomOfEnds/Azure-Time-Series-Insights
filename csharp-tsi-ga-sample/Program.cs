@@ -23,7 +23,7 @@ namespace TimeSeriesInsightsQuerySample
         // Azure Active Directory application configuration
         internal static string AadClientApplicationId = "#PLACEHOLDER#";
         internal static string AadClientSecret = "#PLACEHOLDER#";
-        internal static string[] AadScopes = new string[] { "https://api.timeseries.azure.com//user_impersonation" };
+        internal static string[] AadScopes = new string[] { "https://api.timeseries.azure.com/.default" };
         internal static string AadRedirectUri = "http://localhost:8080/";
         internal static string AadTenantName = "#PLACEHOLDER#";
         internal static string AadAuthenticationAuthority = "https://login.microsoftonline.com/" + AadTenantName + ".onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/";
@@ -196,9 +196,9 @@ namespace TimeSeriesInsightsQuerySample
              * https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api
              */
 
-            Uri getEnvironmentsUri = new UriBuilder("https")
+            Uri getEnvironmentsUri = new UriBuilder("https", "api.timeseries.azure.com")
             {
-                Path = "https://api.timeseries.azure.com/environments",
+                Path = "/environments",
                 Query = "api-version=2016-12-12"
             }.Uri;
             var getEnvironmentsResponse = await AsyncHttpGetRequestHelper(httpClient, getEnvironmentsUri);
@@ -208,9 +208,9 @@ namespace TimeSeriesInsightsQuerySample
              * https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api
              */
             
-            Uri getAvailabilityUri = new UriBuilder("https")
+            Uri getAvailabilityUri = new UriBuilder("https", EnvironmentFqdn)
             {
-                Path = $"https://{EnvironmentFqdn}/availability",
+                Path = "/availability",
                 Query = "api-version=2016-12-12"
             }.Uri;
             var getAvailabilityResponse = await AsyncHttpGetRequestHelper(httpClient, getAvailabilityUri);
@@ -232,9 +232,9 @@ namespace TimeSeriesInsightsQuerySample
                      }
                 }";
 
-            Uri postMetadataUri = new UriBuilder("https")
+            Uri postMetadataUri = new UriBuilder("https", EnvironmentFqdn)
             {
-                Path = $"https://{EnvironmentFqdn}/metadata",
+                Path = "/metadata",
                 Query = "api-version=2016-12-12"
             }.Uri;
 
@@ -256,9 +256,9 @@ namespace TimeSeriesInsightsQuerySample
                     ""take"": 10
                 }";
 
-            Uri getEventsUri = new UriBuilder("https")
+            Uri getEventsUri = new UriBuilder("https", EnvironmentFqdn)
             {
-                Path = $"https://{EnvironmentFqdn}/events",
+                Path = "/events",
                 Query = "api-version=2016-12-12"
             }.Uri;
 
@@ -278,9 +278,9 @@ namespace TimeSeriesInsightsQuerySample
                     ""content"":" + getEventsInput +
                 "}";
 
-            Uri wssEventsUri = new UriBuilder("wss")
+            Uri wssEventsUri = new UriBuilder("wss", EnvironmentFqdn)
             {
-                Path = $"wss://{EnvironmentFqdn}/events",
+                Path = "/events",
                 Query = "api-version=2016-12-12"
             }.Uri;
 
@@ -329,9 +329,9 @@ namespace TimeSeriesInsightsQuerySample
                     }
                 }";
 
-            Uri wssAggregatesUri = new UriBuilder("wss")
+            Uri wssAggregatesUri = new UriBuilder("wss", EnvironmentFqdn)
             {
-                Path = $"wss://{EnvironmentFqdn}/aggregates",
+                Path = "/aggregates",
                 Query = "api-version=2016-12-12"
             }.Uri;
 
